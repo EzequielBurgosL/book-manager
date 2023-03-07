@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { books } from "./books";
 import { Book } from "./models/book";
 import bodyparser from 'body-parser';
+import { isBookDuplicated } from "./validation";
 
 const app = express();
 app.use(bodyparser.json());
@@ -18,9 +19,8 @@ app.get('/api/books', (req: Request, res: Response) => {
 app.post('/api/books', (req: Request, res: Response) => {
   try {
     const book: Book = req.body;
-    // Check if book already exists in the array
-    const exists = books.some(b => b.title === book.title && b.author === book.author && b.publishedDate === book.publishedDate);
-    if (exists) {
+
+    if (isBookDuplicated(books, book)) {
       res.status(400).send('Book already exists');
     } else {
       book.id = books.length + 1;
@@ -44,7 +44,7 @@ app.put('/api/books/:id', (req: Request, res: Response) => {
       res.send(book);
     }
   } catch (error) {
-    console.log('error: ', error); 
+    console.log('error: ', error);
   }
 });
 
