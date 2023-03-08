@@ -1,7 +1,15 @@
 import { Book } from "./models/book";
 import request from 'supertest';
 import app from './app';
-import server from './server'
+import server from './server';
+
+const bookId = 1;
+
+jest.mock('./utils', () => ({
+  __esModule: true,
+  ...jest.requireActual('./utils'),
+  generateBookId: jest.fn(() => bookId),
+}));
 
 describe('Books API endpoints', () => {
   let book: Book;
@@ -9,7 +17,7 @@ describe('Books API endpoints', () => {
   beforeAll(() => {
     // Set up a book object for testing
     book = {
-      id: 1,
+      id: bookId,
       title: 'Test Book',
       author: 'Test Author',
       publishedDate: '2022-01-01',
@@ -46,6 +54,15 @@ describe('Books API endpoints', () => {
 
       expect(res.statusCode).toEqual(400);
       expect(res.text).toEqual('Book already exists');
+    });
+  });
+
+  describe('GET /api/books/:id', () => {
+    it('should return a book', async () => {
+      const res = await request(app).get(`/api/books/${book.id}`);
+
+      expect(res.statusCode).toEqual(200);
+      expect(res.body).toEqual(book);
     });
   });
 
