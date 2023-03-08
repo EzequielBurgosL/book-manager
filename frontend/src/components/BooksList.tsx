@@ -9,10 +9,15 @@ export function BooksList() {
 
   useEffect(() => {
     axios.get('http://localhost:3000/api/books').then((response) => {
-      console.log('response: ', response);
       setBooks(response.data);
     });
   }, []);
+
+  function handleDelete(id?: number) {
+    axios.delete(`http://localhost:3000/api/books/${id}`).then(() => {
+      setBooks(books.filter(book => book.id !== id));
+    });
+  }
 
   return (
     <div>
@@ -30,8 +35,8 @@ export function BooksList() {
           </tr>
         </thead>
         <tbody>
-          {books.map((book) => (
-            <tr key={book.id}>
+          {books.map((book, index) => (
+            <tr key={`${book.id}-${index}`}>
               <td>{book.title}</td>
               <td>{book.author}</td>
               <td>{book.genre}</td>
@@ -42,7 +47,12 @@ export function BooksList() {
                 >
                   Edit
                 </Link>
-                <button className="btn btn-sm btn-danger">Delete</button>
+                <button
+                  className="btn btn-sm btn-danger"
+                  onClick={() => handleDelete(book.id)}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

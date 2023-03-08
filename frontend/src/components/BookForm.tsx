@@ -34,10 +34,10 @@ export function BookForm() {
       genre,
       publishedDate,
     };
-    console.log('book: ', book);
 
     if (id) {
-      axios.put(`http://localhost:3000/api/books/${id}`, book).then(() => {
+      const updatedBook = { ...book, id: Number(id) };
+      axios.put(`http://localhost:3000/api/books/${id}`, updatedBook).then(() => {
         navigate('/');
       });
     } else {
