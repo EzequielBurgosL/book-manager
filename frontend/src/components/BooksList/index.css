@@ -1,0 +1,81 @@
+.books-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 64px;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+.books-list h2 {
+  margin-top: 0;
+  font-size: 36px;
+  text-align: center;
+  color: rgb(4, 6, 25);;
+}
+
+.books-list a.btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  background-color: rgb(4, 6, 25);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.books-list a.btn:hover {
+  background-color: rgb(4, 6, 25, 0.8);
+}
+
+.books-list table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+.books-list th, .books-list td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.books-list th {
+  background-color: rgb(4, 6, 25);
+  color: #fff;
+}
+
+.books-list td:last-child {
+  white-space: nowrap;
+}
+
+.books-list a.btn-sm {
+  padding: 6px 12px;
+}
+
+.books-list button {
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.books-list button.btn-primary {
+  background-color: rgb(4, 6, 25);
+  border-color: rgb(4, 6, 25);
+  color: #fff;
+  margin-right: 12px;
+}
+
+.books-list button.btn-primary:hover {
+  background-color: rgba(4, 6, 25, 0.8);
+  color: #fff;
+}
+
+.books-list button.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+}
+
+.books-list button.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}

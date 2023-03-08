@@ -2,7 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { Book } from '../types';
+import { Book } from '../../types';
+import './index.css'
 
 export function BookForm() {
   const { id } = useParams<{ id: string }>();
@@ -53,8 +54,8 @@ export function BookForm() {
   }
 
   return (
-    <div>
-      <h2>{id ? 'Edit Book' : 'Add Book'}</h2>
+    <div className='form-container'>
+      <h2 className='form-header'>{id ? 'Edit Book' : 'New Book'}</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
