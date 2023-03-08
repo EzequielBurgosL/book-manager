@@ -1,18 +1,20 @@
 import express, { Request, Response } from "express";
+import bodyparser from 'body-parser';
 import { books } from "./books";
 import { Book } from "./models/book";
-import bodyparser from 'body-parser';
 import { isBookDuplicated } from "./validation";
+const cors = require('cors');
 
 const app = express();
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({ extended: true }));
+app.use(cors()) // enable all CORS requests
+app.use(bodyparser.json()); // parse application/json
+app.use(bodyparser.urlencoded({ extended: true })); // parse application/x-www-form-urlencoded
 
 app.get('/api/books', (req: Request, res: Response) => {
   try {
     res.send(books);
   } catch (error) {
-    console.log('error: ', error);
+    res.status(500).send(error);
   }
 });
 
@@ -28,7 +30,7 @@ app.post('/api/books', (req: Request, res: Response) => {
       res.send(book);
     }
   } catch (error) {
-    console.log('error: ', error);
+    res.status(500).send(error);
   }
 });
 
@@ -44,7 +46,7 @@ app.put('/api/books/:id', (req: Request, res: Response) => {
       res.send(book);
     }
   } catch (error) {
-    console.log('error: ', error);
+    res.status(500).send(error);
   }
 });
 
@@ -59,7 +61,7 @@ app.delete('/api/books/:id', (req: Request, res: Response) => {
       res.sendStatus(204);
     }
   } catch (error) {
-    console.log('error: ', error);
+    res.status(500).send(error);
   }
 });
 
