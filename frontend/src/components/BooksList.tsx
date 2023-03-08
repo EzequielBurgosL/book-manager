@@ -14,8 +14,11 @@ export function BooksList() {
   }, []);
 
   function handleDelete(id?: number) {
+    if (!id) return console.log('unable to delete book, missing book "id"');
+
     axios.delete(`http://localhost:3000/api/books/${id}`).then(() => {
-      setBooks(books.filter(book => book.id !== id));
+      const filteredBookList = books.filter(book => book.id !== id);
+      setBooks(filteredBookList);
     });
   }
 

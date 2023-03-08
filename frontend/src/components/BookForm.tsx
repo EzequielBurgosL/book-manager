@@ -25,7 +25,6 @@ export function BookForm() {
   }, [id]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    console.log('event: ', event);
     event.preventDefault();
 
     const book: Book = {
