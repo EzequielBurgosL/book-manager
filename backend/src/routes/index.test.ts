@@ -1,13 +1,13 @@
-import { Book } from "./models/book";
+import { Book } from "../models/book";
 import request from 'supertest';
-import app from './app';
-import server from './server';
+import app from '../app';
+import server from '../server';
 
 const bookId = 1;
 
-jest.mock('./utils', () => ({
+jest.mock('../utils', () => ({
   __esModule: true,
-  ...jest.requireActual('./utils'),
+  ...jest.requireActual('../utils'),
   generateBookId: jest.fn(() => bookId),
 }));
 
