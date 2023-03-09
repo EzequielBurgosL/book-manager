@@ -1,0 +1,23 @@
+{
+  "name": "book-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently --kill-others --names \"BACKEND,FRONTEND\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run dev --prefix ./backend\" \"npm run start --prefix ./frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/EzequielBurgosL/book-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EzequielBurgosL/book-manager/issues"
+  },
+  "homepage": "https://github.com/EzequielBurgosL/book-manager#readme",
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
+}
