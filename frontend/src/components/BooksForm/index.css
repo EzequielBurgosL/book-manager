@@ -14,7 +14,7 @@
 }
 
 /* Style for form labels */
-label {
+.form-container label {
   font-size: 18px;
   display: block;
   margin-bottom: 0.5rem;
@@ -22,7 +22,7 @@ label {
 }
 
 /* Style for form inputs */
-input {
+.form-container input {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
@@ -32,7 +32,7 @@ input {
 }
 
 /* Style for form submit button */
-button[type="submit"] {
+.form-container button[type="submit"] {
   margin-right: 16px;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
@@ -45,7 +45,7 @@ button[type="submit"] {
   transition: background-color 0.2s;
 }
 
-button[type="submit"]:hover {
+.form-container button[type="submit"]:hover {
   background-color: #0062cc;
 }
 
