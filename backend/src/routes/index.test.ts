@@ -2,6 +2,7 @@ import { Book } from "../models/book";
 import request from 'supertest';
 import app from '../app';
 import server from '../server';
+import { NextFunction, Request, Response } from "express";
 
 const bookId = 1;
 
@@ -9,6 +10,9 @@ jest.mock('../utils', () => ({
   __esModule: true,
   ...jest.requireActual('../utils'),
   generateBookId: jest.fn(() => bookId),
+  Authentication: jest.fn(() => ({
+    isAuthenticated: (req: Request, res: Response, next: NextFunction) => next()
+  }))
 }));
 
 describe('Books API endpoints', () => {
